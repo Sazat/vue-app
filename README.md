@@ -1,3 +1,7 @@
+Pseudo : Sazat
+
+https://sazat.github.io/vue-app/
+
 # vue-app
 
 ## Project setup
