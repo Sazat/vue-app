@@ -9,6 +9,40 @@
   </div>
 </template>
 
+<script>
+export default {
+  name:'App',
+  data() {
+    return {
+      authenticated:false,
+      username:"",
+      users: [
+                    {
+                        username: "zaza",
+                        password: "123zaza"
+                    },
+                    {
+                        username: "toto",
+                        password: "toto76Nantes"
+                    },
+                    ],
+    }
+  },
+
+  methods: {
+    setUsername(status) {
+      this.username=status
+    },
+    setAuthenticated(status) {
+      this.authenticated=status
+    },
+    logout(){
+      this.authenticated=false
+    }
+  }
+}
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
