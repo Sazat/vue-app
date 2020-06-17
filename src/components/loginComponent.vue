@@ -2,16 +2,11 @@
   <div class="loginComponent">
     <h1>Connexion</h1>
    
-    <form v-if="!connexion">
+    <form>
         <input type="text" id="username" v-model="input.username" ><br>
         <input type="text" id="password" v-model="input.password" ><br>
         <button type="button" v-on:click="login()">Connexion</button>
     </form>
-
-    <div v-if="connexion">
-        <p>Vous êtes déjà connecté !</p>
-        <p>Hop ! <router-link to="/userAccount/:name">C'est par ici</router-link></p>
-    </div>
   </div>
   
 </template>
@@ -19,40 +14,37 @@
 <script>
 export default {
         name: 'loginComponent',
-        
-        props: {
-            auth:{
-                type: Boolean,
-                //required: true
-            }
-        },
+      
 
-        mounted: function() {
-            console.log("auth : " + this.auth)
-        },
+        // mounted: function() {
+        //     console.log("valeur session : "+ sessionStorage.getItem("authTest"))
+        //     console.log("connex" + this.connexion)
+        //     this.connexion = sessionStorage.getItem("authTest")
+        
+        //     console.log("val connexion ap " + this.connexion)
+
+        // },
 
        
-        watch: {
+        // watch: {
         
 
-            connection() {
-                if(this.connexion) {
-                    this.auth=this.connexion
-                    return this.auth
-                }
-                else {
-                    return this.auth
-                }
+        //     connection() {
+        //         if(this.connexion) {
+        //             this.auth=this.connexion
+        //             return this.auth
+        //         }
+        //         else {
+        //             return this.auth
+        //         }
                 
-            },
-        },
+        //     },
+        // },
             
                 data: function() {
 
                     var data = {
-                        msg:"hello",
-                        connexion: false,
-                        compteur: 0,
+
                         users: [
                     {
                         username: "zaza",
@@ -75,22 +67,19 @@ export default {
 
             methods: {
 
-                // verif() {
-                //     console.log(this.auth)
-                // },
-
                 login() {
                   
                     if(this.input.username != "" && this.input.password != "") {
                         
                         this.users.forEach(user => {
                             if(this.input.username == user.username && this.input.password == user.password)  {
-                                this.connexion = true
+                               
                                 this.testRouter()
                             }
                             else {
                             
                                 console.log("mauvais mdp ou username")
+                          
                             }
                         });
                         
@@ -101,10 +90,12 @@ export default {
                     }
                 },
  
-                async testRouter() {
+                testRouter() {
                     let name = this.input.username
-                  //  await this.connection();
-                    this.$router.push({ name : 'userAccount', params: { username: name }
+                    sessionStorage.setItem("auth", true)
+                  sessionStorage.setItem("username", name)
+                    this.$router.push({ name : 'userAccount'
+                    //, params: { username: name }
                     })
                 
                 },

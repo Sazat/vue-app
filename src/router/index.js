@@ -39,31 +39,45 @@ const router = new VueRouter({
 
 export default router
 
+let session=sessionStorage.getItem("auth");
 
-// router.beforeEach((to,from,next) => {
+router.beforeEach((to,from,next) => {
+  
+  if(to.path == '/login' && session){
+   
+    next('/userAccount/'+sessionStorage.getItem("username"))
+    // if(session){
+      // next('/userAccount')
+    // }
+    // else{
+    //   next()
+    // }
+  
+  }
 
-// if(from.path == "/login" && to.path == "/userAccount") {
-//   if(to.params.auth == false) {
-//     alert ("bien essayé !")
-//     next("/login")
-//   }
+  else if(to.path.includes('/userAccount')){
+    
+    if(!session) {
+    
+      next('/login')
+    }
 
-//   else {
-//     console.log("bravo")
-//   }
-// }
-//   if(from.path == "/login") {
-//     console.log(to.path)
-//     console.log("from" + from.path)
-//     console.log("cool je viens de login")
-//     console.log("auth " + to.params.username)
-//   }
+  else { next()}
+
+    // else {
+    
+    //   console.log(sessionStorage.getItem("username"))
+    //    next('/userAccount/'+sessionStorage.getItem("username"))
+    // }
+
+  }
+    
+
+  else {
+    next()
+  }
+
   
-//   // if(to.path == "/userAccount"){
   
-  
-//   // }
-  
-//   next()
-//   })
+})
   
