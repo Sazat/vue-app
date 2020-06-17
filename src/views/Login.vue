@@ -17,10 +17,12 @@
 export default {
         name: 'login',    
         mounted() {
-    if(this.authenticated){
-     
+    if(this.$parent.authenticated){
       this.$router.replace({ name: 'userAccount'})
     }
+    // else {
+    //   this.$router.replace({ name: 'login'})
+    // }
     
   },
         
@@ -43,9 +45,6 @@ export default {
                             if(this.input.username == user.username && this.input.password == user.password)  {
                                 this.$emit("authenticated", true)
                                 this.$emit("username", user.username)
-                                sessionStorage.setItem("auth",true)
-                                sessionStorage.setItem("name",user.username)
-
                                 this.$router.replace({name: "userAccount", params: { "username": user.username}})
                             }
                             else {
@@ -61,16 +60,6 @@ export default {
                         //message erreur infos non-complétées
                     }
                 },
- 
-                // testRouter() {
-                //     let name = this.input.username
-                    
-                //   sessionStorage.setItem("username", name)
-                //     this.$router.push({ name : 'userAccount'
-                //     , params: { username: name }
-                //     })
-                
-                // },
              }
        
 

@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Login from '../views/Login.vue'
+import userAccount from '../views/userAccount.vue'
 
 Vue.use(VueRouter)
 
@@ -23,28 +25,28 @@ Vue.use(VueRouter)
   {
     path: '/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
+    //component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
+    component: Login
   },
 
   {
     path:'/userAccount/:username',
     name: 'userAccount',
-    component: () => import (/* webpackChunkName: "userAccount" */ '../views/userAccount.vue')
+    //component: () => import (/* webpackChunkName: "userAccount" */ '../views/userAccount.vue')
+    component: userAccount
   }
 ]
 
 const router = new VueRouter({
+  mode: 'history',
+  base:process.envBASE_URL,
   routes
 })
 
 export default router
 
-router.beforeEach((to,from,next) => {
-  if(to.path.includes('/userAccount')  && (!sessionStorage.getItem("auth") || sessionStorage.getItem("auth")==null)) {
-   console.log(sessionStorage.getItem("auth"))
-    next('/login')
-  }
-  else {
-    next()
-  }
-})
+// router.beforeEach((to,from, next) => {
+//   if(to.path.includes('/userAccoun') && !this.authenticated) {
+//     next('/login')
+//   }
+// })

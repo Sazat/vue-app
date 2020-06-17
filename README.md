@@ -2,6 +2,8 @@ Pseudo : Sazat
 
 https://sazat.github.io/vue-app/
 
+L'application comporte un espace protégé fonctionnel
+
 # vue-app
 
 ## Project setup

@@ -1,11 +1,13 @@
 <template>
-  <div id="app">
+  <div id="app" v-on:bonjour="direBonjour=true">
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
-      <router-link to="/login">Login</router-link>
+      <router-link to="/login" v-if="!authenticated">Votre Espace Sécurisé</router-link>
+      <router-link to="/login" v-if="authenticated"><button v-on:click="logout()">Déconnexion</button></router-link>
     </div>
-    <router-view/>
+    
+    <router-view @authenticated="setAuthenticated" @username="setUsername"/>
   </div>
 </template>
 
@@ -14,6 +16,7 @@ export default {
   name:'App',
   data() {
     return {
+      direBonjour:false,
       authenticated:false,
       username:"",
       users: [
@@ -38,6 +41,8 @@ export default {
     },
     logout(){
       this.authenticated=false
+      this.username=""
+      this.$router.replace({ name: 'login'})
     }
   }
 }
