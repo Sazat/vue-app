@@ -7,10 +7,16 @@
       <p>Vient de : {{admin.origine}}</p>
       <p>Age : {{admin.age}} ans</p>
       
-      <h2>Aime : </h2>
+      <h3>Aime : </h3>
       
       <ul class="liste">  
         <li v-for="activite in activites" :key="activite.nomAct">{{activite.nomAct}}</li>
+      </ul>
+
+      <h3>N'aime pas : </h3>
+      
+      <ul class="liste">  
+        <li v-for="h in hate" :key="h.hatred">{{h.hatred}}</li>
       </ul>
     </div>
   </div>
@@ -36,7 +42,7 @@ export default {
       {nomAct: "manger"},
       {nomAct: "dormir"}],
 
-      hate: ["les cyclistes sur les trottoirs", "le sucré"]
+      hate: [{hatred:"les cyclistes sur les trottoirs"}, {hatred:"le sucré"}]
     }
   },
   components: {
@@ -47,7 +53,6 @@ export default {
   toutSavoir(){
       this.savoir=true
       this.show()
-      
     },
   
   async show() {
@@ -60,6 +65,14 @@ export default {
       container.appendChild(p)
       document.querySelector('.infos').appendChild(container)
     });
+
+    await this.hate.forEach(h => {
+      const container = document.createElement('div')
+      const p = document.createElement('p')
+      p.textContent=h
+      container.appendChild(p)
+      document.querySelector('.infos').appendChild(container)
+    })
 
     
     
