@@ -30,7 +30,8 @@ export default {
         age: 18,
         
       },
-      activites: [{nomAct: "lecture"}, 
+      activites: [
+      {nomAct: "lecture"}, 
       {nomAct: "voyages"},
       {nomAct: "manger"},
       {nomAct: "dormir"}],
@@ -51,6 +52,7 @@ export default {
   
   async show() {
    // let frame = document.querySelector('.infos')
+   
     await this.activites.forEach(activite => {
       const container = document.createElement('div')
       const p = document.createElement('p')
@@ -71,5 +73,13 @@ export default {
 <style scoped>
 .liste {
   list-style: none;
+}
+
+.infos {
+  width: 60%;
+  margin: 30px auto;
+  padding: 15px;
+  border: 2px double rgb(170, 57, 57);
+  border-radius: 30px;
 }
 </style>

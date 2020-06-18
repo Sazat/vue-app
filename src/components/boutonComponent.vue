@@ -1,18 +1,24 @@
 <template>
-    <div class="contentButton">
-        <button type="button" class="btn btn-danger" v-bind:class="{classButton:isGreen}" @click="myFunction"><span>{{titleButton}}</span></button>
+    <div v-bind:class="{contentButton:isGreen}">
+        <button type="button" v-bind:class="[isGreen ? classButton : normalBtn]" @click="myFunction"><span>{{titleButton}}</span></button>
     </div>
 </template>
 
 <script>
 export default {
   name: 'monButton',
-  props: ['titleButton', 'colorButton', 'type', 'isGreen'],
+  props: ['titleButton', 'type', 'isGreen'],
+  data() {
+    return {
+      classButton: 'classButton',
+      normalBtn:'btn btn-primary'
+    }
+  },
   methods: {
     myFunction: function() {
       this.$emit(this.type);
       this.$emit(this.titleButton);
-      this.$emit(this.colorButton);
+      this.$emit(this.isGreen);
     },
   }
 }
