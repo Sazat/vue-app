@@ -3,7 +3,7 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
-      <router-link to="/login" v-if="!authenticated">Votre Espace Sécurisé</router-link>
+      <router-link to="/login">Votre Espace Sécurisé</router-link> |
       <router-link to="/login" v-if="authenticated"><button v-on:click="logout()">Déconnexion</button></router-link>
     </div>
     
@@ -57,7 +57,7 @@ export default {
   color: #2c3e50;
 
   margin: 10px auto;
-  
+
 }
 
 #nav {
@@ -71,5 +71,9 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+router-link {
+  margin: 5px
 }
 </style>

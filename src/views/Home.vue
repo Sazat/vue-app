@@ -4,11 +4,9 @@
     <HelloWorld msg="Welcome to Sarah Z. Vue.js App"/>
     <div id="btnPolis">
       <monButton isGreen="true" titleButton="Dis-moi bonjour" type="direBonjour" @direBonjour="direBonjour"></monButton>
-<!--      
-<br>
-<br> -->
+
       <monButton isGreen="true" titleButton="Dis-moi au revoir" type="direByebye" @direByebye="direByebye"></monButton>
-      <!-- <br><br> -->
+      
       <div v-if="showBonjour">{{this.msg}}</div>
       <div v-if="showBye">{{this.msg}}</div>
       
