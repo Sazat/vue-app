@@ -35,6 +35,7 @@ export default {
 }
 
 .classButton {
+  width: 50%;
     display:block;
     position: relative; 
     background: #41B883 none repeat scroll 0 0;
@@ -47,7 +48,7 @@ export default {
 
 .classButton:hover::after {
     background: #fff;
-    /* background: #23aad3; */
+    
     right: -1200px;
 }
 

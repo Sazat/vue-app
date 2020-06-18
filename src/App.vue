@@ -49,6 +49,23 @@ export default {
 </script>
 
 <style>
+
+@media (max-width: 640px) {
+	* {
+		box-sizing: border-box;
+    }
+  
+}
+    
+@media (max-device-width:768px) and (orientation: landscape) {
+  html {
+   -webkit-text-size-adjust: 100%;
+   -ms-text-size-adjust: 100%;
+  }
+}
+
+
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
