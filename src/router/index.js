@@ -30,7 +30,7 @@ Vue.use(VueRouter)
   },
 
   {
-    path:'/userAccount/:username',
+    path:'/userAccount/:username?',
     name: 'userAccount',
     //component: () => import (/* webpackChunkName: "userAccount" */ '../views/userAccount.vue')
     component: userAccount
